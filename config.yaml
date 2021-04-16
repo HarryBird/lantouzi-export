@@ -1,0 +1,73 @@
+cookies:
+    -
+        Name: "LTZ_S"
+        Value: ""
+        Domain: ".lantouzi.com"
+        Path: "/"
+        Secure: true
+        HTTPOnly: true
+        ValidTime: 86400
+    -
+        Name: "DWJUC_S"
+        Value: ""
+        Domain: ".lantouzi.com"
+        Path: "/"
+        Secure: true
+        HTTPOnly: true
+        ValidTime: 86400
+targets:
+    -
+        url: "https://lantouzi.com/user/trade/datalist?"
+        name: "全部"
+        screen: true
+        parse: true
+        column: 4
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=1&"
+        name: "充值"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=2&"
+        name: "提现"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=3&"
+        name: "投资"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=4&"
+        name: "利息"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=5&"
+        name: "回收本金"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=8&"
+        name: "手续费"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=6&"
+        name: "平台奖励"
+        screen: true
+        parse: true
+        column: 3
+    -
+        url: "https://lantouzi.com/user/trade/datalist?type=7&"
+        name: "其他"
+        screen: true
+        parse: true
+        column: 3
+
