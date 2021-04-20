@@ -13,7 +13,6 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/HarryBird/cdp"
-	xcdp "github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 )
 
@@ -43,10 +42,6 @@ func New(opts ...Option) *Export {
 }
 
 func (e *Export) Run() error {
-	if err := e.handleCookies(); err != nil {
-		return errors.WithMessage(err, "Run: handle cookies fail")
-	}
-
 	if e.opts.column == 4 {
 		e.records = [][]string{[]string{"交易金额", "说明", "账户余额", "交易时间"}}
 	} else if e.opts.column == 3 {
@@ -116,7 +111,7 @@ func (e *Export) Run() error {
 }
 
 func (e *Export) csv() error {
-	dir := "./lantouzi/" + e.opts.name + "/"
+	dir := "./lantouzi/流水/" + e.opts.name + "/"
 
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return err
@@ -145,7 +140,7 @@ func (e *Export) csv() error {
 }
 
 func (e *Export) store(buf *[]byte, page int) error {
-	dir := "./lantouzi/" + e.opts.name + "/"
+	dir := "./lantouzi/流水/" + e.opts.name + "/"
 
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return err
@@ -216,21 +211,4 @@ func (e *Export) parse(buf *string) ([][]string, error) {
 	//e.logger.Printf("match: %v", records)
 
 	return records, nil
-}
-
-func (e *Export) handleCookies() error {
-	if len(e.opts.cookies) == 0 {
-		return nil
-	}
-
-	for i, _ := range e.opts.cookies {
-		exp, ok := e.opts.cookies[i]["ValidTime"].(int)
-
-		if !ok {
-			return errors.New("handleCookie: cookie 's expires invalid")
-		}
-		e.opts.cookies[i]["Expires"] = xcdp.TimeSinceEpoch(time.Now().Add(time.Duration(exp) * time.Second))
-	}
-
-	return nil
 }

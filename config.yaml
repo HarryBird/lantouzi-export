@@ -6,7 +6,7 @@ cookies:
         Path: "/"
         Secure: true
         HTTPOnly: true
-        ValidTime: 86400
+        ExpireWithIn: 86400
     -
         Name: "DWJUC_S"
         Value: ""
@@ -14,7 +14,7 @@ cookies:
         Path: "/"
         Secure: true
         HTTPOnly: true
-        ValidTime: 86400
+        ExpireWithIn: 86400
 targets:
     -
         url: "https://lantouzi.com/user/trade/datalist?"
